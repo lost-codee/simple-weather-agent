@@ -16,8 +16,6 @@ client = OpenAI(
     api_key=os.getenv("OPENAI_API_KEY")
 )
 
-print(os.getenv("OPENAI_API_KEY"))
-
 
 def execute_tool(tool_name: str, tool_input: str) -> str:
     """Execute the specified tool with the given input."""
@@ -56,8 +54,7 @@ def run_agent(user_input: str) -> str:
     max_steps = 3  # Prevent infinite loops
     step = 0
 
-    while step < max_steps:
-        print(f"Step {step}:")        
+    while step < max_steps:   
         # Get response from OpenAI
         response = client.chat.completions.create(
             model="gpt-3.5-turbo",
@@ -67,8 +64,6 @@ def run_agent(user_input: str) -> str:
 
         content  = response.choices[0].message.content
         agent_response = parse_agent_response(content)
-
-        print(content)
 
         # Check if we have a final answer
         if "final_answer" in agent_response:

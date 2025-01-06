@@ -25,8 +25,6 @@ def get_weather(city: str) -> str:
         weather_desc = data["weather"][0]["description"]
         temp = data["main"]["temp"]
         humidity = data["main"]["humidity"]
-
-        print(f"Current weather in {city}: {weather_desc}. Temperature: {temp}°C, Humidity: {humidity}%")
         
         return f"Current weather in {city}: {weather_desc}. Temperature: {temp}°C, Humidity: {humidity}%"
     except Exception as e:
